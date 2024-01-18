@@ -11,18 +11,17 @@ class GuestsTableSeeder extends Seeder
      */
     public function run()
     {
-        $param=[
-            'name'=>'大阪太郎',
-            'address'=> '大阪府大阪市',
-            'tel'=> '12-3456-7890'
-        ];
-        DB::table('guests')->insert($param);
-        
-        $param=[
-            'name'=>'大阪太郎',
-            'address'=> '大阪府大阪市',
-            'tel'=> '12-3456-7890'
-        ];
-        DB::table('guests')->insert($param);
+        $faker = \Faker\Factory::create('ja_JP');
+        for($i =0; $i <10; $i++){
+            $param=[
+                'name'=>$faker->name(),
+                'address'=>$faker->address(),
+                'tel'=> $faker->phoneNumber(),
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ];
+            DB::table('guests')->insert($param);
+        }
     }
+
 }

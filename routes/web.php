@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/guest','GuestController@index');
+Route::get('/guest/add','GuestController@add');
+Route::post('/guest/add','GuestController@create');
+Route::get('/reserve','ReserveController@reserve');
+
+Route::get('/room_type','Room_typeController@index');
+Route::resource('room','RoomController');
